@@ -1,25 +1,26 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
 const feedRoutes = require('./routes/feed');
+import cors from 'cors'
 const app = express();
-const cors = require('cors');
+
 
 // to parse incoming json
 app.use(express.json());
 
 app.use(function (req, res, next) {
-    // 👇️ specify CORS headers to send 👇️
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header(
-      'Access-Control-Allow-Methods',
-      'POST, PUT, PATCH, GET, DELETE, OPTIONS',
-    );
-    res.header(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization',
-    );
-    next();
-  });
+  // 👇️ specify CORS headers to send 👇️
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Methods',
+    'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+  );
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization',
+  );
+  next();
+});
 
 // forward any incoming request that starts with '/feed' to feedRoutes
 app.use('/feed', feedRoutes);
