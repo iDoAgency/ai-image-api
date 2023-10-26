@@ -31,6 +31,7 @@ mongoose
     'mongodb+srv://ivagueba:Welcome12345@birthday-api.p8w54ip.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(result => {
+    console.log("result=> ", result);
     // listen to incoming requests on port 8080
     app.listen(3000, () => console.log('listening on port: ', 3000));
   })
